@@ -4,27 +4,28 @@
 print('CrashRestarter 1.0 ||| Release')
 
 # Edit this variables!!!
-fileforlaunch = 'C:\\Users\\User\\Desktop\\coding\\main.py' # File what you need restart from crash. Example: C:\\Users\\User\\PythonProjects\\cookieclicker.py
-reportcrash = True # Report crash or start without notify
-askforrestart = False # Ask user for restart
+fileforlaunch = 'C:\\PleaseChangeMe\\YourScript.py' # File what you need restart from crash. Example: C:\\Users\\User\\PythonProjects\\cookieclicker.py
+askforrestart = False # Рестартить только с подтверждения пользователя
 
 
+
+
+if fileforlaunch == 'C:\\PleaseChangeMe\\YourScript.py':
+    input('Путь до программы установлен по умолчанию. Пожалуйста, измените переменную fileforlaunch. Если ваш файл как раз и хранится по такому пути (что странно) - нажмите Enter. Если послe нажатия Enter вы увидите бесконечную волну крашей - вероятно, вам все же надо изменить путь.')
 counter = 0
 def anticrash():
+    crash = False
     global counter
-    if reportcrash:
-        print('\n[CRASHRESTARTER] File has been started. №' + str(counter) + '\n')
+    print('\n[CRASHRESTARTER] Файл был запущен. Попытка №' + str(counter) + '\n')
     try:
         exec(open(fileforlaunch).read())
     except:
-        if reportcrash:
-            print('\nCRASHRESTARTER] File has been crashed or you entered wrong path.')
-    if reportcrash:
-        print('\n[CRASHRESTARTER] File has been stopped (not crashed).')
+        print('\nCRASHRESTARTER] Файл был крашнут (или вы ввели неправильный путь)')
+        crash = True
+    if crash == False:
+        print('\n[CRASHRESTARTER] Файл был остановлен (не крашнут)')
     if askforrestart:
-        input('Press enter for restart')
+        input('Нажмите Enter для рестарта')
     counter += 1
     anticrash()
 anticrash()
-
-
