@@ -1,4 +1,4 @@
 # CrashRestarter
-Restartes program after crash.
+Рестартит программу после краша.
 
 by holinim with ❤
